@@ -30,6 +30,7 @@ from DISClib.ADT import list as lt
 from DISClib.ADT import map as mp
 from DISClib.DataStructures import mapentry as me
 from DISClib.Algorithms.Sorting import shellsort as sa
+from DISClib.ADT import graph as gr
 assert cf
 
 """
@@ -40,6 +41,13 @@ los mismos.
 # Construccion de modelos
 
 
+def newAnalyzer():
+    analyzer = {'LandingPointO': None, 'LandingPointD': None, 'CableDistance': None, 'CableCapacity': None, 'Countries': None}
+    analyzer['LandingPointO'] = mp.newMap(numelements=1300, maptype='PROBING', comparefunction=cmpCountriesbyNames)
+    analyzer['LandingPointD'] = mp.newMap(numelements=1300, maptype='PROBING', comparefunction=cmpCountriesbyNames)
+    analyzer['CableDistance'] = gr.newGraph(datastructure='ADJ_LIST', directed=True, size=3500, comparefunction=cmpCountriesbyNames)
+    analyzer['CableCapacity'] = gr.newGraph(datastructure='ADJ_LIST', directed=True, size=3500, comparefunction=cmpCountriesbyNames)
+    return analyzer
 
 
 # Funciones para agregar informacion al catalogo
@@ -49,5 +57,15 @@ los mismos.
 # Funciones de consulta
 
 # Funciones utilizadas para comparar elementos dentro de una lista
+
+
+def cmpCountriesbyNames(country1, country2):
+    if country1 == country2:
+        return 0
+    elif country1 > country2:
+        return 1
+    else:
+        return -1
+
 
 # Funciones de ordenamiento

@@ -47,6 +47,7 @@ def newAnalyzer():
     analyzer['LandingPointD'] = mp.newMap(numelements=1300, maptype='PROBING', comparefunction=cmpCountriesbyNames)
     analyzer['CableDistance'] = gr.newGraph(datastructure='ADJ_LIST', directed=True, size=3500, comparefunction=cmpCountriesbyNames)
     analyzer['CableCapacity'] = gr.newGraph(datastructure='ADJ_LIST', directed=True, size=3500, comparefunction=cmpCountriesbyNames)
+    analyzer['Countries'] = mp.newMap(numelements=300, maptype='PROBING', comparefunction=cmpCountriesbyNames)
     return analyzer
 
 
